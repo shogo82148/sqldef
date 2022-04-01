@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: 1.16
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: POSTGRES_VERSION="${POSTGRES_VERSION:-12}" docker-compose up -d
         env:
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: 1.16
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: make package
 
@@ -58,7 +58,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: 1.16
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: make package
       - name: Release binaries
         run: |
@@ -69,7 +69,7 @@ jobs:
           GHR_VERSION: v0.13.0
           GITHUB_TOKEN: ${{ secrets.githubtoken }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: sqldef/homebrew-sqldef
           ssh-key: ${{ secrets.HOMEBREW_DEPLOY_KEY }}
